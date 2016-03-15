@@ -7,20 +7,41 @@ class HomeController < ApplicationController
 
   	result = nil
 
+    #====== Tags Filter
   	if !asset_params[:tag_list].blank?
   		result = Asset.tagged_with( asset_params[:tag_list].split(" "), :any => true).order(:updated_at)
     else
     	result = Asset.order(:updated_at)
   	end
 
-  	if !asset_params[:category_id].blank?
-  		result = result.where( category_id: asset_params[:category_id] )
-  	end
+    result = result.joins(:asset_data).where( sql_query ) if !sql_query.empty?
 
-  	if !asset_params[:sub_category_id].blank?
-  		result = result.where( sub_category_id: asset_params[:sub_category_id] )
-  	end
-  	 @assets = result.page params[:page]
+  	@assets = result.distinct.page params[:page]
+  end
+
+  
+  private 
+
+  def sql_query
+
+    sqls = Array.new
+    
+    #====== Category Filter
+    if !asset_params[:category_id].blank?
+      sqls << "category_id = #{asset_params[:category_id]}"
+    end
+
+    #====== Title Filter
+    if !params[:title].blank?
+       sqls << "( asset_data.descriptor_id = 1 AND asset_data.descriptor_value LIKE '%#{params[:title]}%') "
+    end
+
+    #====== Author Filter
+    if !params[:author].blank?
+      sqls << "( asset_data.descriptor_id = 2 AND asset_data.descriptor_value LIKE '%#{params[:author]}%') "
+    end
+
+    sqls.join(" OR ")
   end
 
   def asset_params

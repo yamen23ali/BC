@@ -7,14 +7,17 @@
     </div>
 
     <div class="caption">
-       <h4 class="group inner list-group-item-heading">Product title</h4>
-       <p class="group inner list-group-item-text"></p>
-        <div class="row">
-            <div class="col-xs-12 col-md-6">
-                <p class="lead"> <%= @asset.user.full_name %>&nbsp; </p>
+       <h4 class="group inner list-group-item-heading"><%= @asset.title %></h4>
+       <p class="group inner list-group-item-text">
+         Author : <%= @asset.author %> <br/>
+         Edition : <%= @asset.edition %> <br/>
+         Language : <%= @asset.language %> <br/>
+       </p>
+       <div class="row">
+            <div class="col-xs-12 col-md-7">
             </div>
             
-            <div class="col-xs-12 col-md-6">
+            <div class="col-xs-12 col-md-5">
               <%= link_to "Make Offer", offers_path( "offer[to_id]": @asset.user.id ), method: :post, class: "btn btn-success" %>
             </div>
         </div>

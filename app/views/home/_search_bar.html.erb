@@ -1,16 +1,19 @@
 <%= form_for( Asset.new , :url => root_path, html: { :method => 'GET', class: "form-horizontal" } ) do |f| %>
 
 <div class="col-lg-3 item_search_bar">
-  <%= f.collection_select :category_id , Category.where(active: true) , :id , 
-    :name  , { :include_blank => "Category" },{ :class => "form-control home-filter", "data-live-search" => "true" }  %>
+  <%= f.collection_select :category_id , get_all_categories, 
+   :id, :name  , { :include_blank => "Category" },{ :class => "form-control home-filter", "data-live-search" => "true" }  %>
 </div>
 
-<div class="col-lg-3 item_search_bar">
-  <%= f.collection_select :sub_category_id , @sub_categories ||= [], :id , 
-    :name, { :include_blank => "Sub Category" } , { :class => "form-control", "data-live-search" => "true" } %>
+<div class="col-lg-2 item_search_bar">
+  <%= text_field_tag :title, '', { class: 'form-control', placeholder: 'Title' } %>
 </div>
 
-<div class="col-lg-5 item_search_bar"> 
+<div class="col-lg-2 item_search_bar">
+  <%= text_field_tag :author, '', { class: 'form-control', placeholder: 'Author' } %>
+</div>
+
+<div class="col-lg-4 item_search_bar"> 
   <%= f.text_area :tag_list, :size => "50x1", class: 'form-control' , placeholder: 'Tags'  %>
 </div>
 
@@ -19,5 +22,8 @@
       <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
   </span>
 </div>
+
+
+
 
 <% end %>

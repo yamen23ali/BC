@@ -15,4 +15,8 @@ module ApplicationHelper
     end
   end
 
+  def get_all_categories
+    Category.where(active: true).order( :name )
+  end
+
 end

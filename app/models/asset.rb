@@ -33,5 +33,26 @@ class Asset < ActiveRecord::Base
   def photos
     asset_data.select {|data| data.descriptor.nil? }
   end
-  
+
+  def title
+    extract_descriptors( 1, 'No title')
+  end
+
+  def author
+    extract_descriptors( 2, '-')
+  end
+
+  def edition
+    extract_descriptors( 3, '-')
+  end
+
+  def language
+    extract_descriptors( 4, '-')
+  end
+
+  def extract_descriptors( id, message )
+    extracted_descriptors = asset_data.select {|data| !data.descriptor.nil? &&  data.descriptor.id == id }
+    extracted_descriptors.empty? ? message : extracted_descriptors[0].descriptor_value
+  end
+
 end

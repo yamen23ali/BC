@@ -4,5 +4,10 @@ class AssetData < ActiveRecord::Base
 
   has_attached_file :photo, styles: { medium: "200x200>", thumb: "100x100>" }, default_url: "mine/missing100.png"
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\Z/
+
+
+  def title
+  	( self.descriptor.id == 1 ) ? self.descriptor_value : nil
+  end
   
 end
