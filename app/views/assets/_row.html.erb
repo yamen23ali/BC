@@ -1,0 +1,18 @@
+<tr>
+  <td><%= category %></td>
+  <td><%= sub_category %></td>
+  <td>
+    <ul>
+      <% descriptors.each do | descriptor | %>
+        <li> <%= descriptor %> </li>
+      <% end %>
+    </ul>
+   </td>
+  <td> <%= image_tag asset_preview %> </td>
+  <td> <%= tags %> </td>
+  <td> <%= link_to icon("show"), @asset %> </td>
+  <td> <%= link_to icon("edit"), edit_asset_path(@asset) %> </td>
+  <td> <%= link_to icon("remove"), @asset, method: :delete, data: { confirm: 'Are you sure?' } %> </td>
+</tr>
+ 
+        

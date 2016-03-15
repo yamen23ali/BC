@@ -1,0 +1,14 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Category</th>
+      <th>Descriptors</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <% assets.each do |asset| %>
+    <%= render 'assets_row' , :f => f , :att_name => att_name  , :asset => asset %>
+  <% end %>
+</table>

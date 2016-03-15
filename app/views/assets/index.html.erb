@@ -1,0 +1,31 @@
+<div class="container">
+  <table class="table table-striped">
+    
+    <thead>
+      <tr>
+        <th>Category</th>
+        <th>Sub Category</th>
+        <th>Descriptors</th>
+        <th>Photos</th>
+        <th>Tags</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+    	<% @assets.each do |asset| @asset = asset %>
+           <%= render "row" %>
+        <% end %>
+    </tbody>
+
+  </table>
+
+  <div class="form-group">
+    <div class="col-lg-1">
+       <%= link_to 'Add Book', new_asset_path, class: "btn btn-success" %>
+    </div>
+  </div>
+
+</div>

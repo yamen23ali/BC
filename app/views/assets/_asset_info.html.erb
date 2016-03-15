@@ -1,0 +1,12 @@
+<td><%= @asset.id %></td>
+<td><%= category %></td>
+<td colspan="1">
+  <ul>
+      <% descriptors.each do | descriptor | %>
+        <li> <%= descriptor %> </li>
+      <% end %>
+   </ul>
+</td>
+<td> <%= image_tag asset_preview  , onerror: "this.onerror=null;this.src='../../assets/mine/missing100.png'"%> </td>
+
+

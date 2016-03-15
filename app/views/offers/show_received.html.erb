@@ -1,0 +1,40 @@
+<div class="container">
+
+<table class="table table-striped">
+ <thead>
+    <tr>
+      <th colspan="4" style="text-align:center; vertical-align:middle;">Give</th>
+      <th colspan="4" style="text-align:center; vertical-align:middle;">Receive</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+    <tr>
+      <td colspan="4">
+        <%= render 'show_offer_row' , :assets => @offer.received_assets %>
+      </td>
+
+      <td colspan="4" style="border-left: 1px solid black">
+        <%= render 'show_offer_row' , :assets => @offer.given_assets %>
+      </td>
+    </tr>
+
+  </tbody>
+ </table>
+
+<div class="form-group">
+    <div class="col-lg-1">
+      <%= form_for(@offer , :url => accept_offer_path(@offer) , :method => :PUT ) do |f| %>
+        <%= f.submit 'Accept', class: "btn btn-success" %>
+      <% end %> 
+    </div>
+
+    <div class="col-lg-1 ">
+      <%= form_for(@offer , :url => reject_offer_path(@offer) , :method => :PUT ) do |f| %>
+        <%= f.submit 'Reject', class: "btn btn-danger" %>
+      <% end %>
+    </div>
+ </div>
+
+</div>

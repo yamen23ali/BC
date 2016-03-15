@@ -1,0 +1,11 @@
+<div class="row photos">
+    <div class="col-lg-8 existing">
+
+       <div class = "photo_info" data-photo-id = <%= f.object.id %> data-asset-id = <%= @asset.id %> >
+         <%= link_to_remove_association '', f %>
+       </div>
+      
+      <%= image_tag f.object.photo.url(:medium) %>
+
+    </div>
+</div>

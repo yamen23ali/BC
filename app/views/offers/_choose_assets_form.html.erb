@@ -1,0 +1,48 @@
+<div class="container">
+<%= form_for(@offer , :url => offers_choose_assets_path , html: { class: "form-horizontal" }, :method => :POST ) do |f| %>
+  
+  <% 
+     origin = params[:origin]
+     from_assets = ( origin == 'received_offers' ? @offer.to_assets : @offer.from_assets ) 
+     to_assets = ( origin == 'received_offers' ? @offer.from_assets : @offer.to_assets ) %>
+
+     <%= f.hidden_field :to_id, :value => @offer.to_id %>
+     <%= f.hidden_field :id, :value => @offer.id %>
+
+    <table class="table table-striped">
+    <thead>
+      <tr>
+        <th colspan="5" style="text-align:center; vertical-align:middle;">Give</th>
+        <th colspan="5" style="text-align:center; vertical-align:middle;">Receive</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td colspan="5">
+            <%= render 'assets' , :f => f , :assets => from_assets , :att_name => "choosed_assets" %>
+        </td>
+
+        <td colspan="5" style="border-left: 1px solid black">
+            <%= render 'assets' , :f => f , :assets => to_assets , :att_name => "choosed_assets" %>
+        </td>
+      </tr>
+    </tbody>
+
+  </table>
+
+  <%= f.hidden_field :origin, :value => origin %>
+
+  <div class="form-group">
+    <div class="col-lg-1 col-lg-offset-5">
+       <%= f.submit get_caption(), class: "btn btn-success" %>  
+    </div>
+  
+    <div class="col-lg-1 col-lg-offset-1">
+       <%= link_to "Cancel", cancel_path , class: "btn btn-danger" %>
+    </div>
+
+  </div>
+
+<% end %>
+  </div>

@@ -1,0 +1,12 @@
+<% if params['origin'] == 'received_offers' %>
+  <% cancel_path =  received_offers_offers_path %>
+<% else %>
+  <% cancel_path = offers_path %>
+<% end %>
+
+
+
+<%= render 'choose_assets_form', cancel_path: cancel_path %>
+
+
+

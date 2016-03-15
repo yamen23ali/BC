@@ -1,0 +1,34 @@
+<div class="container">
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Tel</th>
+      <th>Mobile</th>
+      <th>Address</th>
+      <th>Contact email</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= link_to user.id , user_path(user) %></td>
+        <td><%= user.first_name %></td>
+        <td><%= user.last_name %></td>
+        <td><%= user.tel %></td>
+        <td><%= user.mobile %></td>
+        <td><%= user.address %></td>
+        <td><%= user.contact_email %></td>
+        <td><%= image_tag user.photo.url(:thumb), :alt => '' %> </td>
+        <td><%= link_to icon("edit"), edit_user_path(user) %></td>
+        <td><%= link_to icon("remove"), user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
