@@ -5,7 +5,7 @@
     <div class= "col-lg-7 col-lg-offset-2">
       <div class="well bs-component ">
 
-          <legend>Asset</legend>
+          <legend>Book</legend>
 
           <div class= "form-horizontal" >
 
@@ -14,14 +14,6 @@
               
               <div class="col-lg-6">
                 <%= category %>
-              </div>
-          </div>
-
-          <div class="form-group">
-              <label for="sub_category_id" class="col-lg-2 control-label">Sub Category</label>
-              
-              <div class="col-lg-6">
-                      <%= sub_category %>
               </div>
           </div>
 
@@ -47,7 +39,7 @@
 
           <% if @asset.photos.count > 0 %>
             <div class="form-group ">
-              <div class="col-lg-5 col-lg-offset-3 ">
+              <div class="col-lg-7 col-lg-offset-3 ">
                  <ul class="bxslider">
                     <% @asset.photos.each do | photo | %>
                       <li> <%= image_tag photo.photo.url(:medium), :alt => '' %> </li>

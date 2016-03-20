@@ -16,6 +16,8 @@ class HomeController < ApplicationController
 
     result = result.joins(:asset_data).where( sql_query ) if !sql_query.empty?
 
+    result = result.where.not(user_id: current_user.id)
+
   	@assets = result.distinct.page params[:page]
   end
 

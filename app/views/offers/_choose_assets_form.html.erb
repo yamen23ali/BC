@@ -1,10 +1,10 @@
 <div class="container">
 <%= form_for(@offer , :url => offers_choose_assets_path , html: { class: "form-horizontal" }, :method => :POST ) do |f| %>
   
-  <% 
+  <%
      origin = params[:origin]
-     from_assets = ( origin == 'received_offers' ? @offer.to_assets : @offer.from_assets ) 
-     to_assets = ( origin == 'received_offers' ? @offer.from_assets : @offer.to_assets ) %>
+     from_assets = get_give_assets(@offer,params['choosed_asset_id'] )
+     to_assets = get_receive_assets(@offer, params['choosed_asset_id'] ) %>
 
      <%= f.hidden_field :to_id, :value => @offer.to_id %>
      <%= f.hidden_field :id, :value => @offer.id %>

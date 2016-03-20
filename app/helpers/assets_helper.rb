@@ -30,9 +30,9 @@ module AssetsHelper
     }.join(' ')
   end
 
-  def asset_preview
+  def asset_preview(size)
     if !@asset.photos.empty?
-      @asset.photos.first.photo.url(:thumb) 
+      @asset.photos.first.photo.url(size)
     else
       "mine/missing100.png"
     end
