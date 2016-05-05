@@ -19,4 +19,12 @@ class ApplicationController < ActionController::Base
     method = "#{resource}_params"
     params[resource] &&= send(method) if respond_to?(method, true)
   end
+
+  def after_sign_in_path_for(resource)
+    if current_user.contact_email.nil? && current_user.mobile.nil?
+      edit_user_path(current_user.id)
+    else
+      root_path
+    end
+  end
 end

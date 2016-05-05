@@ -2,7 +2,13 @@ Rails.application.routes.draw do
 
   root :to => "home#index"
 
-  devise_for :users
+  devise_for :users, :controllers => {:registrations => 'registration'}
+
+  devise_scope :user do
+    get "registration/index", to: "registration#index"
+  end
+
+  get 'registration/index'
 
   delete '/assets/:id/:asset_data_id' , to: 'assets#destroy_asset_data'
 

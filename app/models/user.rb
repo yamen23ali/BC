@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable ,:confirmable ,:lockable
 
-  has_attached_file :photo, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
+  has_attached_file :photo, styles: { medium: "200x200>", thumb: "100x100>", grid: "150x150>" }, default_url: "mine/missing100.png"
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\Z/
 
   belongs_to :account
@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   validates_email_format_of :contact_email , :allow_nil => true , :allow_blank => true ,:message => 'is not looking good'
 
   def default_values
-    self.account_id ||= 2
+    self.account_id ||= 1
   end
 
   def role
