@@ -10,11 +10,6 @@ Account.create(id: 2, name: 'admin')
 
 Status.create(id: 1, name: 'active')
 
-Category.create(id: 1, name: 'cat1')
-
-SubCategory.create(id: 1, name: 'subcat1', category_id: 1 )
-
-
 Category.create(id: 1, name: 'Science fiction', active: true)
 Category.create(id: 2, name: 'Satire', active: true)
 Category.create(id: 3, name: 'Self help', active: true)
