@@ -77,7 +77,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # Default URL for mailer
-  config.action_mailer.default_url_options = { host: '', port: 3000 }
+  config.action_mailer.default_url_options = { host: 'ttps://intense-inlet-32538.herokuapp.com/'}
   config.action_mailer.delivery_method = :smtp
  #Mailer Settings
   ActionMailer::Base.delivery_method = :smtp
